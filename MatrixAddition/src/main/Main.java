@@ -1,5 +1,15 @@
 package main;
 /*
+//Name: Cameron Beatty
+//Date: 11/06/2025
+//Class: CSCI2260 (U01)
+//Purpose:to create a program that reads
+//in a .txt file containing two 2D arrays of integers.
+//Then using multi-threading add up the
+//two arrays by splitting up their addition
+//to four threads. Each thread is responsible
+//for summing one quadrant.
+ 
 This code is provided to give you a
 starting place. It should be modified.
 No further imports are needed.
@@ -16,7 +26,26 @@ machines, how sluggish humans are,
 threads compared to processes, etcetera,
 and connect these issues to 
 multi-threading.
+*/
 
+/*
+Multi-threaded code allows us to
+allocate portions of a task out
+to separate threads to work together 
+almost at the same time. This reduces
+resource usage on parts of the task that
+have already been completed. Four people
+tasked with each painting one wall of a room
+simultaneously will complete the task quicker
+and use less resources because each person
+has less to complete and can stop once their
+portion is complete. Just like multi-threading
+though, getting four people to paint just one room
+might be excessive and actually use more resources.
+But if you had an entire house to paint
+you'd see a huge increase in efficiency just like
+if you had a million item array and then
+you multi-threaded your sort of it.
 */
 import java.io.IOException;
 import java.io.File;
@@ -38,7 +67,7 @@ public class Main
 		try
 		{
 			//Create a new file
-			File dataFile = new File("matrix2.txt");
+			File dataFile = new File("matrix3.txt");
 			//Scan the file
 			Scanner fileReader = new Scanner(dataFile);
 			//The first two integers in the file
@@ -104,6 +133,11 @@ public class Main
 		operator2.start();
 		operator3.start();
 		operator4.start();
+		//join threads
+		operator1.join();
+		operator2.join();
+		operator3.join();
+		operator4.join();
 		//Print out the summed array
 		System.out.println("Summed Array:");
 		print2DArray(summedMatrix, row, column);
@@ -125,5 +159,4 @@ public class Main
 			System.out.println();
 		}
 	}
-
 }
