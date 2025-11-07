@@ -6,14 +6,15 @@ package main;
 public class ThreadOperation extends Thread
 {
 	//two arrays to add
-	int[][] A;
-	int[][] B;
+	private int[][] A;
+	private int[][] B;
 	//the sum of the two arrays
-	int[][] sumArray;
-	Quadrant quadrant;
+	private int[][] sumArray;
+	//quadrant
+	private Quadrant quadrant;
 	//row and column length from file
-	int row;
-	int column;
+	private int row;
+	private int column;
 	//enum to determine which quadrant
 	//is being added
 	public static enum Quadrant
@@ -24,11 +25,11 @@ public class ThreadOperation extends Thread
 		Q4,
 	}
 	//constructor
-	public ThreadOperation(int[][] recievedA, int[][] recievedB, int[][] summedMatrix, Quadrant q, int row, int column)
+	public ThreadOperation(int[][] A, int[][] B, int[][] summedMatrix, Quadrant q, int row, int column)
 	{
 		//A and B arrays assigned
-		this.A = recievedA;
-		this.B = recievedB;
+		this.A = A;
+		this.B = B;
 		//assign quadrant
 		this.quadrant = q;
 		//row and column from file
@@ -130,9 +131,6 @@ public class ThreadOperation extends Thread
 				{
 					int temp = A[i][j] + B[i][j];
 					sumArray[i][j] = temp;
-					//Main.print2DArray(this.sumArray, row, column);
-					//System.out.println();
-					//try {Thread.sleep(100);} catch(Exception e) {}
 				}
 			}
 			break;

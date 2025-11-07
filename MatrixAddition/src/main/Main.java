@@ -9,7 +9,7 @@ package main;
 //two arrays by splitting up their addition
 //to four threads. Each thread is responsible
 //for summing one quadrant.
- 
+
 This code is provided to give you a
 starting place. It should be modified.
 No further imports are needed.
